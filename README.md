@@ -1,1 +1,1 @@
-AI FlowEditor is an AI Platforms 
+Software for running AI with flow programing base on Python and main library from Node-Editor This is an open source project user can download and customise code by yourselves which is i had allowed to modify in folder boxitem
