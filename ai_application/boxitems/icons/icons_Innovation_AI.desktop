@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Innovation AI
+Version=v1.0.0
+Icon=/home/stm/STM_Innovation_AI/ai_application/boxitems/icons/logostm.png
+X-Icon-Path=/home/stm/STM_Innovation_AI/ai_application/boxitems/icons/
+Exec=python3 /home/stm/STM_Innovation_AI/ai_main_app.py
+Terminal=true
+Type=Application
