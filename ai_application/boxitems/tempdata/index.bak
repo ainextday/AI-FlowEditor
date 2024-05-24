@@ -1,0 +1,604 @@
+<html>
+  <head>
+    <title>AI Flow Editor Live !!!</title>
+    <style>
+	
+		.vertical-center {
+		margin: 0;
+		position: absolute;
+		top: 34px;
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+		width: 942px;
+		height: 69px;
+		left: 72px;
+			}
+		body,td,th {
+			font-weight: bold;
+		}
+		.button {
+		  font: bold 15px Arial;
+		  text-decoration: none;
+		  background-color: #EEEEEE;
+		  color: #333333;
+		  padding: 2px 10px 2px 10px;
+		  border-top: 1px solid #CCCCCC;
+		  border-right: 1px solid #333333;
+		  border-bottom: 1px solid #333333;
+		  border-left: 1px solid #CCCCCC;
+		}
+		table, th, td {
+		  border-collapse: collapse;
+		}
+		
+		.container {
+		   border: 1px solid #31C4F3;
+		   width: 200px;
+		   height: 200px;
+		   position: relative;
+		}
+		.tag {
+		   float: left;
+		   position: absolute;
+		   left:0px;
+		   top: 10px;
+		   z-index: 1000;
+		   background-color: #29ACDF;
+		   opacity: 0.7;
+		   padding: 5px;
+		   color: #FFFFFF;
+		   font-weight: bold;
+		}
+		.draw_circle{
+		   float: left;
+		   position: absolute;
+		   left:0px;
+		   top: 0px;
+		   z-index: 1000;
+		   font-weight: bold;
+		}
+
+    </style>
+    
+     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
+     
+     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+     <script type="text/javascript">
+	 
+	    var item_detail = [];
+	 
+	 	var x = [];
+		var y = [];
+		var actives = [];
+		var toggle = false;
+		
+		for(var i = 0; i < 19; i++){
+			x[i] = 10000;
+			y[i] = 10000;
+			actives[i] = "";
+  		}
+		
+		var mousePosition = {x:0, y:0};
+	    var text = "";
+	
+	 	window.setInterval(function(){
+			$(document).ready(function() {
+				$.getJSON('/get_data', function(dat) {
+				  $("#getTitle").text(dat['titlename']);
+				  $("#getDate").text(dat['datestring']);
+				  $("#getTime").text(dat['timestring']);
+				  $("#getMapImage").text(dat['mapimage']);
+				  
+				  $("#getName1").text(dat['name1']);
+				  x[0] = dat['x1'];
+				  y[0] = dat['y1'];
+				  actives[0] = dat['activeid1'];
+				  $("#getParamOne1").text(dat['p11']);
+				  $("#getParamTwo1").text(dat['p21']);
+				  $("#getParamThree1").text(dat['p31']);
+				  $("#getLastUpdate1").text(dat['lastUpdate1']);
+				  item_detail[0] = dat['name1'];
+				  item_tot
+				  item_ok
+				  item_ng
+				  
+				  $("#getName2").text(dat['name2']);
+				  x[1] = dat['x2'];
+				  y[1] = dat['y2'];
+				  actives[1]  = dat['activeid2'];
+				  $("#getParamOne2").text(dat['p12']);
+				  $("#getParamTwo2").text(dat['p22']);
+				  $("#getParamThree2").text(dat['p32']);
+				  $("#getLastUpdate2").text(dat['lastUpdate2']);
+				  item_detail[1] = dat['name2'];
+				  
+				  $("#getName3").text(dat['name3']);
+				  x[2] = dat['x3'];
+				  y[2] = dat['y3'];
+				  actives[2]  = dat['activeid3'];
+				  $("#getParamOne3").text(dat['p13']);
+				  $("#getParamTwo3").text(dat['p23']);
+				  $("#getParamThree3").text(dat['p33']);
+				  $("#getLastUpdate3").text(dat['lastUpdate3']);
+				  item_detail[2] = dat['name3'];
+				  
+				  $("#getName4").text(dat['name4']);
+				  x[3] = dat['x4'];
+				  y[3] = dat['y4'];
+				  actives[3] = dat['activeid4'];
+				  $("#getParamOne4").text(dat['p14']);
+				  $("#getParamTwo4").text(dat['p24']);
+				  $("#getParamThree4").text(dat['p34']);
+				  $("#getLastUpdate4").text(dat['lastUpdate4']);
+				  item_detail[3] = dat['name4'];
+				  
+				  $("#getName5").text(dat['name5']);
+				  x[4] = dat['x5'];
+				  y[4] = dat['y5'];
+				  actives[4] = dat['activeid5'];
+				  $("#getParamOne5").text(dat['p15']);
+				  $("#getParamTwo5").text(dat['p25']);
+				  $("#getParamThree5").text(dat['p35']);
+				  $("#getLastUpdate5").text(dat['lastUpdate5']);
+				  item_detail[4] = dat['name5'];
+				  
+				  $("#getName6").text(dat['name6']);
+				  x[5] = dat['x6'];
+				  y[5] = dat['y6'];
+				  actives[5] = dat['activeid6'];
+				  $("#getParamOne6").text(dat['p16']);
+				  $("#getParamTwo6").text(dat['p26']);
+				  $("#getParamThree6").text(dat['p36']);
+				  $("#getLastUpdate6").text(dat['lastUpdate6']);
+				  item_detail[5] = dat['name6'];
+				  
+				  $("#getName7").text(dat['name7']);
+				  x[6] = dat['x7'];
+				  y[6] = dat['y7'];
+				  actives[6] = dat['activeid7'];
+				  $("#getParamOne7").text(dat['p17']);
+				  $("#getParamTwo7").text(dat['p27']);
+				  $("#getParamThree7").text(dat['p37']);
+				  $("#getLastUpdate7").text(dat['lastUpdate7']);
+				  item_detail[6] = dat['name7'];
+				  
+				  $("#getName8").text(dat['name8']);
+				  x[7] = dat['x8'];
+				  y[7] = dat['y8'];
+				  actives[7] = dat['activeid8'];
+				  $("#getParamOne8").text(dat['p18']);
+				  $("#getParamTwo8").text(dat['p28']);
+				  $("#getParamThree8").text(dat['p38']);
+				  $("#getLastUpdate8").text(dat['lastUpdate8']);
+				  item_detail[7] = dat['name8'];
+				  
+				  $("#getName9").text(dat['name9']);
+				  x[8] = dat['x9'];
+				  y[8] = dat['y9'];
+				  actives[8] = dat['activeid9'];
+				  $("#getParamOne9").text(dat['p19']);
+				  $("#getParamTwo9").text(dat['p29']);
+				  $("#getParamThree9").text(dat['p39']);
+				  $("#getLastUpdate9").text(dat['lastUpdate9']);
+				  item_detail[8] = dat['name9'];
+				  
+				  $("#getName10").text(dat['name10']);
+				  x[9] = dat['x10'];
+				  y[9] = dat['y10'];
+				  actives[9] = dat['activeid10'];
+				  $("#getParamOne10").text(dat['p110']);
+				  $("#getParamTwo10").text(dat['p210']);
+				  $("#getParamThree10").text(dat['p310']);
+				  $("#getLastUpdate10").text(dat['lastUpdate10']);
+				  item_detail[9] = dat['name10'];
+				  
+				  $("#getName11").text(dat['name11']);
+				  x[10] = dat['x11'];
+				  y[10] = dat['y11'];
+				  actives[10] = dat['activeid11'];
+				  $("#getParamOne11").text(dat['p111']);
+				  $("#getParamTwo11").text(dat['p211']);
+				  $("#getParamThree11").text(dat['p311']);
+				  $("#getLastUpdate11").text(dat['lastUpdate11']);
+				  
+				  $("#getName12").text(dat['name12']);
+				  x[11] = dat['x12'];
+				  y[11] = dat['y12'];
+				  actives[11] = dat['activeid12'];
+				  $("#getParamOne12").text(dat['p112']);
+				  $("#getParamTwo12").text(dat['p212']);
+				  $("#getParamThree12").text(dat['p312']);
+				  $("#getLastUpdate12").text(dat['lastUpdate12']);
+				  item_detail[11] = dat['name12'];
+				  
+				  $("#getName13").text(dat['name13']);
+				  x[12] = dat['x13'];
+				  y[12] = dat['y13'];
+				  actives[12] = dat['activeid13'];
+				  $("#getParamOne13").text(dat['p113']);
+				  $("#getParamTwo13").text(dat['p213']);
+				  $("#getParamThree13").text(dat['p313']);
+				  $("#getLastUpdate13").text(dat['lastUpdate13']);
+				  item_detail[12] = dat['name13'];
+				  
+				  $("#getName14").text(dat['name14']);
+				  x[13] = dat['x14'];
+				  y[13] = dat['y14'];
+				  actives[13] = dat['activeid14'];
+				  $("#getParamOne14").text(dat['p114']);
+				  $("#getParamTwo14").text(dat['p214']);
+				  $("#getParamThree14").text(dat['p314']);
+				  $("#getLastUpdate14").text(dat['lastUpdate14']);
+				  item_detail[13] = dat['name14'];
+				  
+				  $("#getName15").text(dat['name15']);
+				  x[14] = dat['x15'];
+				  y[14] = dat['y15'];
+				  actives[14] = dat['activeid15'];
+				  $("#getParamOne15").text(dat['p115']);
+				  $("#getParamTwo15").text(dat['p215']);
+				  $("#getParamThree15").text(dat['p315']);
+				  $("#getLastUpdate15").text(dat['lastUpdate15']);
+				  item_detail[14] = dat['name15'];
+				  
+				  $("#getName16").text(dat['name16']);
+				  x[15] = dat['x16'];
+				  y[15] = dat['y16'];
+				  actives[15] = dat['activeid16'];
+				  $("#getParamOne16").text(dat['p116']);
+				  $("#getParamTwo16").text(dat['p216']);
+				  $("#getParamThree16").text(dat['p316']);
+				  $("#getLastUpdate16").text(dat['lastUpdate16']);
+				  item_detail[15] = dat['name16'];
+				  
+				  $("#getName17").text(dat['name17']);
+				  x[16] = dat['x17'];
+				  y[16] = dat['y17'];
+				  actives[16] = dat['activeid17'];
+				  $("#getParamOne17").text(dat['p117']);
+				  $("#getParamTwo17").text(dat['p217']);
+				  $("#getParamThree17").text(dat['p317']);
+				  $("#getLastUpdate17").text(dat['lastUpdate17']);
+				  item_detail[16] = dat['name17'];
+				  
+				  $("#getName18").text(dat['name18']);
+				  x[17] = dat['x18'];
+				  y[17] = dat['y18'];
+				  actives[17] = dat['activeid18'];
+				  $("#getParamOne18").text(dat['p118']);
+				  $("#getParamTwo18").text(dat['p218']);
+				  $("#getParamThree18").text(dat['p318']);
+				  $("#getLastUpdate18").text(dat['lastUpdate18']);
+				  item_detail[17] = dat['name18'];
+				  
+				  $("#getName19").text(dat['name19']);
+				  x[18] = dat['x19'];
+				  y[18] = dat['y19'];
+				  actives[18] = dat['activeid19'];
+				  $("#getParamOne19").text(dat['p119']);
+				  $("#getParamTwo19").text(dat['p219']);
+				  $("#getParamThree19").text(dat['p319']);
+				  $("#getLastUpdate19").text(dat['lastUpdate19']);
+				  item_detail[18] = dat['name19'];
+
+				});
+				
+				Update_DrawCircle();
+				
+			  });
+		}, 1000);
+		
+	  </script>	
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body onLoad="draw();">
+
+  <table width="100%" border="0">
+          <tr>
+          	<td width="3%" bgcolor="#0072BD"><img src="{{url_for('static', filename='logo_re.png')}}"></td>
+            <td width="54%" valign="bottom" bgcolor="#0072BD"><div class="vertical-center"><div class="two"><h1 align="left"><font color="#FFFFFF" size="+3"><a id="getTitle"></a></font></h1></div></div></td>
+            <td width="22%" align="center" valign="bottom" bgcolor="#0072BD"><div class="two"><h1 align="center"><font color="#FFFFFF">Date : <a id="getDate"></a></font></h1></div></td>
+            <td width="21%" align="center" valign="bottom" bgcolor="#00053E"><div class="two"><h1 align="center"><font color="#FFFFFF" size="+4"><a id="getTime"></a></font></h1></div></td>
+          </tr>
+      </table>
+     
+      <div style="position:absolute; margin-left:0px; margin-top:0px;">
+      		<div class="tag">
+        	
+                <table width="480" height="100%">
+                  <tr>
+                    <td width="94"><td height="565" valign="top"><p><font size="+1" color="#FFFFFF">&nbsp;Box Detail :</font></p>
+                      <table width="500" height="550" border="1">
+                        <tr height="20" bgcolor="#142F67">
+                          <td width="20"><div align="center"><font color="#FFFFFF">No.</font></div></td>
+                          <td width="125"><div align="center"><font color="#FFFFFF">Name</font></div></td>
+                          <td width="70"><div align="center"><font color="#FFFFFF">Total</font></div></td>
+                          <td width="70"><div align="center"><font color="#FFFFFF">OK</font></div></td>
+                          <td width="70"><div align="center"><font color="#FFFFFF">NG</font></div></td>
+                          <td width="145"><div align="center"><font color="#FFFFFF">Last Update</font></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">1.</div></td>
+                          <td><div align="center"><a id="getName1"></a></div></td>
+                          <td><div align="center"><a id="getParamOne1"></a></div></div></td>
+                          <td><div align="center"><a id="getParamTwo1"></a></div></div></td>
+                          <td><div align="center"><a id="getParamThree1"></a></div></div></td>
+                          <td><div align="center"><a id="getLastUpdate1"></a></div></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">2.</div></td>
+                          <td><div align="center"><a id="getName2"></a></div></td>
+                          <td><div align="center"><a id="getParamOne2"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo2"></a></div></td>
+                          <td><div align="center"><a id="getParamThree2"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate2"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">3.</div></td>
+                          <td><div align="center"><a id="getName3"></a></div></td>
+                          <td><div align="center"><a id="getParamOne3"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo3"></a></div></td>
+                          <td><div align="center"><a id="getParamThree3"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate3"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">4.</div></td>
+                          <td><div align="center"><a id="getName4"></a></div></td>
+                          <td><div align="center"><a id="getParamOne4"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo4"></a></div></td>
+                          <td><div align="center"><a id="getParamThree4"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate4"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">5.</div></td>
+                          <td><div align="center"><a id="getName5"></a></div></td>
+                          <td><div align="center"><a id="getParamOne5"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo5"></a></div></td>
+                          <td><div align="center"><a id="getParamThree5"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate5"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">6.</div></td>
+                          <td><div align="center"><a id="getName6"></a></div></td>
+                          <td><div align="center"><a id="getParamOne6"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo6"></a></div></td>
+                          <td><div align="center"><a id="getParamThree6"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate6"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">7.</div></td>
+                          <td><div align="center"><a id="getName7"></a></div></td>
+                          <td><div align="center"><a id="getParamOne7"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo7"></a></div></td>
+                          <td><div align="center"><a id="getParamThree7"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate7"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">8.</div></td>
+                          <td><div align="center"><a id="getName8"></a></div></td>
+                          <td><div align="center"><a id="getParamOne8"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo8"></a></div></td>
+                          <td><div align="center"><a id="getParamThree8"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate8"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">9.</div></td>
+                          <td><div align="center"><a id="getName9"></a></div></td>
+                          <td><div align="center"><a id="getParamOne9"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo9"></a></div></td>
+                          <td><div align="center"><a id="getParamThree9"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate9"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">10.</div></td>
+                          <td><div align="center"><a id="getName10"></a></div></td>
+                          <td><div align="center"><a id="getParamOne10"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo10"></a></div></td>
+                          <td><div align="center"><a id="getParamThree10"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate10"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">11.</div></td>
+                          <td><div align="center"><a id="getName11"></a></div></td>
+                          <td><div align="center"><a id="getParamOne11"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo11"></a></div></td>
+                          <td><div align="center"><a id="getParamThree11"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate11"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">12.</div></td>
+                          <td><div align="center"><a id="getName12"></a></div></td>
+                          <td><div align="center"><a id="getParamOne12"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo12"></a></div></td>
+                          <td><div align="center"><a id="getParamThree12"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate12"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">13.</div></td>
+                          <td><div align="center"><a id="getName13"></a></div></td>
+                          <td><div align="center"><a id="getParamOne13"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo13"></a></div></td>
+                          <td><div align="center"><a id="getParamThree13"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate13"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">14.</div></td>
+                          <td><div align="center"><a id="getName14"></a></div></td>
+                          <td><div align="center"><a id="getParamOne14"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo14"></a></div></td>
+                          <td><div align="center"><a id="getParamThree14"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate14"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">15.</div></td>
+                          <td><div align="center"><a id="getName15"></a></div></td>
+                          <td><div align="center"><a id="getParamOne15"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo15"></a></div></td>
+                          <td><div align="center"><a id="getParamThree15"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate15"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">16.</div></td>
+                          <td><div align="center"><a id="getName16"></a></div></td>
+                          <td><div align="center"><a id="getParamOne16"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo16"></a></div></td>
+                          <td><div align="center"><a id="getParamThree16"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate16"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">17.</div></td>
+                          <td><div align="center"><a id="getName17"></a></div></td>
+                          <td><div align="center"><a id="getParamOne17"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo17"></a></div></td>
+                          <td><div align="center"><a id="getParamThree17"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate17"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">18.</div></td>
+                          <td><div align="center"><a id="getName18"></a></div></td>
+                          <td><div align="center"><a id="getParamOne18"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo18"></a></div></td>
+                          <td><div align="center"><a id="getParamThree18"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate18"></a></div></td>
+                        </tr>
+                        <tr height="25">
+                          <td><div align="center">19.</div></td>
+                          <td><div align="center"><a id="getName19"></a></div></td>
+                          <td><div align="center"><a id="getParamOne19"></a></div></td>
+                          <td><div align="center"><a id="getParamTwo19"></a></div></td>
+                          <td><div align="center"><a id="getParamThree19"></a></div></td>
+                          <td><div align="center"><a id="getLastUpdate19"></a></div></td>
+                        </tr>
+                    </table><td width="370"></td>
+                  </tr>
+              </table>
+              </div>
+              <div class="draw_circle">
+              	<canvas id="myCanvas" width="1894" height="970" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+			  </div>
+
+              <img src="{{url_for('static', filename='map_image.png')}}">
+        
+        </div> 
+      
+  <p>&nbsp;</p>
+    
+  </div>
+  
+  	<script type="text/javascript">
+	
+		function Update_DrawCircle()
+		{
+			var coords = [ [x[0]+12,y[0]+15], [x[1]+12,y[1]+15], [x[2]+12,y[2]+15], [x[3]+12,y[3]+15], [x[4]+12,y[4]+15], 
+							[x[5]+12,y[5]+15], [x[6]+12,y[6]+15], [x[7]+12,y[7]+15], [x[8]+12,y[8]+15], [x[9]+12,y[9]+15], 
+							[x[10]+12,y[10]+15], [x[11]+12,y[11]+15], [x[12]+12,y[12]+15], [x[13]+12,y[13]+15], [x[14]+12,y[14]+15], 
+							[x[15]+12,y[15]+15], [x[16]+12,y[16]+15], [x[17]+12,y[17]+15], [x[18]+12,y[18]+15]];
+			
+			var canvas = document.getElementById('myCanvas');
+			var ctx = canvas.getContext('2d');
+			ctx.font = "10px Arial";
+			
+			canvas.addEventListener('mousemove', function (evt) {
+				mousePos = getMousePos(canvas, evt);
+				var message = 'Mouse Moving: ' + mousePos.x + ' , ' + mousePos.y + '        ';
+				mousePosition.x = mousePos.x;
+				mousePosition.y = mousePos.y
+				//text = message;		
+				//writeMessage(canvas, message);
+			}, false);
+			
+			var MouseHover_Device = 1000;
+			
+			//ctx.fillStyle = "#DDDDDD";
+			
+			ctx.clearRect(0, 0, 1894, 970);
+			for(var i = 0; i < coords.length; i++){
+				
+				ctx.beginPath();
+				ctx.arc(coords[i][0], coords[i][1], 8, 0, Math.PI * 2, true);
+
+				ctx.stroke();
+				if(actives[i] === "Active")
+				{
+					if(toggle)
+					{
+						ctx.fillStyle = "#68FF00";
+					}
+					else{
+						ctx.fillStyle = "#DDDDDD";
+					}
+					
+				}
+				else{
+					ctx.fillStyle = "#DDDDDD";
+				}
+				ctx.fill();
+				
+				ctx.fillStyle = "#DE3A25";
+				ctx.fillText(i + 1, coords[i][0] - 5, coords[i][1] + 4);
+				
+				if((parseInt(mousePosition.x) > parseInt(coords[i][0]) - 8 && parseInt(mousePosition.x) < parseInt(coords[i][0] + 8))
+					&& (parseInt(mousePosition.y) > parseInt(coords[i][1]) - 8 && parseInt(mousePosition.y) < parseInt(coords[i][1] + 8)))
+				{
+					
+					//window.alert("Hello " + i);
+					MouseHover_Device = i;
+					
+					//mousePosition.x = 0;
+					//mousePosition.y = 0;
+				}
+				
+			}
+			
+			toggle = ~toggle;
+			
+			//var msg = 'Coords[0]: ' + coords[0][0] + ' , ' + coords[0][1];
+			//writeCoords(canvas, msg);
+			//writeMessage(canvas, text);
+			
+			if(MouseHover_Device != 1000)
+			{
+				writeCoords(canvas, MouseHover_Device, parseInt(mousePosition.x), parseInt(mousePosition.y));
+				MouseHover_Device = 1000;
+			}
+		
+		}
+		
+		function writeCoords(canvas, item_id, x , y) {
+			var message = 'Device id: ' + item_id;
+            var context = canvas.getContext('2d');
+			
+            context.clearRect(x + 15, y + 5, 150, 50);
+            context.font = '10pt Calibri';
+            context.fillStyle = 'green';
+            context.fillText(message, x + 20, y + 15);
+			context.fillText('Name: ' + item_detail[item_id], x + 20, y + 30);
+			
+			//context.lineWidth = "4";
+			//context.strokeStyle = "blue";
+			context.rect(x + 15, y + 5, 150, 50);
+			context.stroke();
+        }
+		
+		function writeMessage(canvas, message) {
+            var context = canvas.getContext('2d');
+            context.clearRect(200, 30, 600, 50);
+            context.font = '10pt Calibri';
+            context.fillStyle = 'blue';
+            context.fillText(message, 230, 45);
+        }
+		
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
+		
+		
+	</script> 
+
+  </body>
+</html>
